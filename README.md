@@ -55,7 +55,8 @@ Import `matplotlib.pyplot` as `plt` and set `%matplotlib inline`  for generating
 
 ```python
 # import matplotlib.pyplot and set inline plotting 
-
+import matplotlib.pyplot as plt
+%matplotlib inline
 ```
 
 Now that we have our data all set and matplotlib in our python environment, we can try some basic plotting techniques.
@@ -70,11 +71,23 @@ Perform the following steps in the cell below:
 
 
 ```python
-
+fig = plt.figure()
+ax = fig.add_axes([0,0,1,1])
+ax.plot(x, y)
+ax.set_title("A subplot test")
+ax.set_xlabel("X axis")
+ax.set_ylabel("Y axis")
 ```
 
 
-![png](index_files/index_9_0.png)
+
+
+    Text(0, 0.5, 'Y axis')
+
+
+
+
+![png](index_files/index_9_1.png)
 
 
 This was easy, let's move on to drawing multiple plots within a figure space. 
@@ -90,11 +103,30 @@ Perform following actions:
 
 
 ```python
+fig = plt.figure()
 
+ax1 = fig.add_axes([0,0,1,1])
+ax2 = fig.add_axes([.2,.6,.3,.3])
+
+ax1.plot(x, y)
+ax2.plot(x, y)
+ax1.set_title("Large Plot")
+ax2.set_title("Small Plot")
+ax1.set_xlabel("x axis")
+ax2.set_xlabel("x axis")
+ax1.set_ylabel('y axis')
+ax2.set_ylabel('y axis')
 ```
 
 
-![png](index_files/index_11_0.png)
+
+
+    Text(0, 0.5, 'y axis')
+
+
+
+
+![png](index_files/index_11_1.png)
 
 
 ## Exercise 3
@@ -116,11 +148,30 @@ Perform following tasks in the cell below:
 
 
 ```python
-
+fig = plt.figure(figsize=[8, 6])
+ax1 = fig.add_axes([0,0,1,1])
+ax2 = fig.add_axes([0.2,0.5,.4,.4])
+ax1.plot(x, z, color='green')
+ax2.plot(x, y, color='red')
+ax2.set_xlim(15, 45)
+ax2.set_ylim(30,80)
+ax1.set_title('X squared')
+ax2.set_title('X doubled')
+ax1.set_xlabel("X axis")
+ax1.set_ylabel("Y axis")
+ax2.set_xlabel("X axis")
+ax2.set_ylabel("Y axis")
 ```
 
 
-![png](index_files/index_13_0.png)
+
+
+    Text(0, 0.5, 'Y axis')
+
+
+
+
+![png](index_files/index_13_1.png)
 
 
 ## Exercise 4
@@ -136,11 +187,27 @@ Perform following steps in the cell below:
 
 
 ```python
+fig = plt.figure(figsize=[8,6])
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
 
+ax1.plot(x,y, color='red', linewidth=3, linestyle = ':')
+ax2.plot(x,z, color='blue', linewidth=5, linestyle = '-.')
+ 
+ax1.set_title('X doubled'), ax2.set_title('X squared')
+ax1.set_xlabel("X axis"), ax1.set_ylabel("Y axis")
+ax2.set_xlabel("X axis"), ax2.set_ylabel("Y axis")
 ```
 
 
-![png](index_files/index_15_0.png)
+
+
+    (Text(0.5, 0, 'X axis'), Text(0, 0.5, 'Y axis'))
+
+
+
+
+![png](index_files/index_15_1.png)
 
 
 ## Exercise 5
@@ -149,11 +216,27 @@ Above figure looks fine but a bit out of proportion. Let's resize this to make t
 
 
 ```python
+fig = plt.figure(figsize=[18,8])
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
 
+ax1.plot(x,y, color='red', linewidth=3)
+ax2.plot(x,z, color='blue', linewidth=5, marker='^')
+ 
+ax1.set_title('X doubled'), ax2.set_title('X squared')
+ax1.set_xlabel("X axis"), ax1.set_ylabel("Y axis")
+ax2.set_xlabel("X axis"), ax2.set_ylabel("Y axis")
 ```
 
 
-![png](index_files/index_17_0.png)
+
+
+    (Text(0.5, 0, 'X axis'), Text(0, 0.5, 'Y axis'))
+
+
+
+
+![png](index_files/index_17_1.png)
 
 
 Congratulations, You have now learnt the basics plotting/labelling and customization techniques in matplotlib. Following lessons will focus on employing these techniques to plot for multiple data types in different analysis contexts. 
